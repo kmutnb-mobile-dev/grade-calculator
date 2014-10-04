@@ -1,0 +1,99 @@
+<!doctype html>
+<html ng-app="FirstApp" lang="en">
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.3/angular.min.js"></script>
+  <script src="app.js"></script>
+  <script src="service.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+
+<body ng-controller="firstCtrl">
+  <div class="container">
+    <h1>http://10.3.161.201:4000/</h1>
+    <h1>GPA : {{gradeCal()}}</h1>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th><center>#</center></th>
+          <th>วิชา</th>
+          <th>หน่วยกิต</th>
+          <th>เกรด</th>
+          <th><center>ลบ</center></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="grade in grades">
+          <td class="col-sm-1" align="center">{{$index+1}}</td>
+          <td><input type="text" ng-model="grade.subject"></td>
+          <td class="col-sm-1">
+            <select class="form-control" ng-model="grade.credit">
+              <option>1</option>
+              <option>3</option>
+            </select>
+          </td>
+          <td class="col-sm-1">
+            <select class="form-control" ng-model="grade.grade">
+              <option>A</option>
+              <option>B+</option>
+              <option>B</option>
+              <option>C+</option>
+              <option>C</option>
+              <option>D</option>
+              <option>D+</option>
+              <option>F</option>
+            </select>
+          </td>
+          <td class="col-sm-1" align="center">
+            <button type="button" class="btn btn-danger" ng-click="delete($index)"><i class="fa fa-trash-o"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="subject" class="col-sm-2 control-label">วิชา</label>
+        <div class="col-sm-4">
+          <input type="text" class="form-control" id="subject" placeholder="ชื่อวิชา" ng-model="inputSubject">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="credit" class="col-sm-2 control-label">หน่วยกิต</label>
+        <div class="col-sm-4">
+          <select class="form-control" ng-model="inputCredit">
+            <option>1</option>
+            <option>3</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="grade" class="col-sm-2 control-label">เกรด</label>
+        <div class="col-sm-1">
+          <select class="form-control" ng-model="inputGrade">
+            <option>A</option>
+            <option>B+</option>
+            <option>B</option>
+            <option>C+</option>
+            <option>C</option>
+            <option>D</option>
+            <option>D+</option>
+            <option>F</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" ng-click="addGrade(inputSubject,inputCredit,inputGrade)">เพิ่มวิชา</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>
