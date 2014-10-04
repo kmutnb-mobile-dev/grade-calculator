@@ -15,7 +15,6 @@
 
 <body ng-controller="firstCtrl">
   <div class="container">
-    <h1>http://10.3.161.201:4000/</h1>
     <h1>GPA : {{gradeCal()}}</h1>
     <table class="table table-bordered">
       <thead>
@@ -30,7 +29,7 @@
       <tbody>
         <tr ng-repeat="grade in grades">
           <td class="col-sm-1" align="center">{{$index+1}}</td>
-          <td><input type="text" ng-model="grade.subject"></td>
+          <td><input type="text" ng-model="grade.name"></td>
           <td class="col-sm-1">
             <select class="form-control" ng-model="grade.credit">
               <option>1</option>

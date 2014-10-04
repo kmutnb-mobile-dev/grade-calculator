@@ -3,17 +3,17 @@ angular.module('FirstApp.service', [])
 .factory('Grades',[function(){
   var grades = [
     {
-      subject: "Network Programming",
+      name: "Network Programming",
       grade: "B",
       credit: 3
     },
     {
-      subject: "Mobile Application Development",
+      name: "Mobile Application Development",
       grade: "B",
       credit: 3
     },
     {
-      subject: "C++",
+      name: "C++",
       grade: "B",
       credit: 3
     }
