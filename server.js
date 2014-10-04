@@ -50,7 +50,7 @@ app.get('/updateSubject/:subject_id',function(request,response)
   var find = {};
   var newData = {};
   if(request.params.subject_id)
-    find.subject_id = request.params.subject_id;
+    find._id = new ObjectID(request.params.subject_id);
 
   if(request.query.name)
     newData.name = request.query.name;
@@ -58,6 +58,8 @@ app.get('/updateSubject/:subject_id',function(request,response)
     newData.credit = request.query.credit;
   if(request.query.grade)
     newData.grade = request.query.grade;
+
+    console.log(newData);
 
   studentGrade.update(find,{'$set':newData},function(err,result)
   {
@@ -69,10 +71,13 @@ app.get('/removeSubject/:subject_id',function(request,response)
 {
   var find = {};
   if(request.params.subject_id)
-    find.subject_id = request.params.subject_id;
+    find._id = new ObjectID(request.params.subject_id);
 
   studentGrade.remove(find,function(err,result)
   {
+    if(err)
+      response.send(err);
+    else
     response.send('Success');
   });
 });

@@ -23,6 +23,7 @@
           <th>วิชา</th>
           <th>หน่วยกิต</th>
           <th>เกรด</th>
+          <th><center>แก้ไข</center></th>
           <th><center>ลบ</center></th>
         </tr>
       </thead>
@@ -49,7 +50,10 @@
             </select>
           </td>
           <td class="col-sm-1" align="center">
-            <button type="button" class="btn btn-danger" ng-click="delete($index)"><i class="fa fa-trash-o"></i></button>
+            <button type="button" class="btn btn-primary" ng-click="edit(grade)">Save</button>
+          </td>
+          <td class="col-sm-1" align="center">
+            <button type="button" class="btn btn-danger" ng-click="delete(grade._id)"><i class="fa fa-trash-o"></i></button>
           </td>
         </tr>
       </tbody>
